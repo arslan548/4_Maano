@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Chocolate Day!</title>
+    <style>
+      body {
+        background-image: url("01.svg"); /* Background image */
+        background-size: cover;
+        color: black; /* Text color */
+        font-family: "Arial", sans-serif;
+        text-align: center;
+        padding: 50px;
+      }
+      .content {
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.8
+        ); /* Semi-transparent background */
+        border-radius: 10px; /* Rounded corners */
+        padding: 20px; /* Inner spacing */
+        display: inline-block; /* Center the div */
+        animation: fadeIn 1s ease-in-out;
+      }
+      h1 {
+        font-size: 3em;
+      }
+      p {
+        font-size: 1.5em;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .sprinkle {
+        position: absolute;
+        top: -10px;
+        width: 10px;
+        height: 10px;
+        background-color: rgba(255, 255, 0, 0.8);
+        border-radius: 50%;
+        pointer-events: none;
+        animation: fall linear forwards;
+      }
+      @keyframes fall {
+        to {
+          transform: translateY(100vh);
+          opacity: 0;
+        }
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.4.0/confetti.browser.min.js"></script>
+    <script>
+      window.onload = function () {
+        sprinkle();
+      };
+
+      function sprinkle() {
+        const sprinkleCount = 100;
+        for (let i = 0; i < sprinkleCount; i++) {
+          createSprinkle();
+        }
+      }
+
+      function createSprinkle() {
+        const sprinkle = document.createElement("div");
+        sprinkle.className = "sprinkle";
+        sprinkle.style.left = Math.random() * 100 + "vw";
+        sprinkle.style.width = Math.random() < 0.5 ? "10px" : "20px"; // Random width for square/rectangle
+        sprinkle.style.height = Math.random() < 0.5 ? "10px" : "20px"; // Random height for square/rectangle
+        sprinkle.style.backgroundColor = `hsl(${
+          Math.random() * 360
+        }, 100%, 50%)`; // Random color
+        sprinkle.style.transform = `rotate(${Math.random() * 360}deg)`; // Random rotation
+        sprinkle.style.animationDuration = Math.random() * 2 + 3 + "s";
+
+        document.body.appendChild(sprinkle);
+        setTimeout(() => {
+          sprinkle.remove();
+        }, 5000);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="content">
+      <h1>Happy Chocolate Day!</h1>
+      <img src="01.gif" alt="Chocolate Day GIF" width="100" height="100" />
+      <!-- Added 01.gif with smaller size -->
+      <p>To my cutie pie,</p>
+      <p>
+        Even though we are miles apart, my love for you is as sweet as
+        chocolate. I hope your day is filled with joy and sweetness!
+      </p>
+      <p>Can't wait to celebrate together soon!</p>
+    </div>
+  </body>
+</html>
